@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["CentralFarma"] = "Principal";
+}
+
+<style>
+    body {
+        background: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .welcome-container {
+        text-align: center;
+        margin-top: 100px;
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+        .welcome-container h1 {
+            font-size: 3em;
+            color: #0078D4;
+        }
+
+        .welcome-container p {
+            font-size: 1.2em;
+            color: #444;
+        }
+
+    #hora {
+        font-size: 1.8em;
+        color: #555;
+        margin-top: 20px;
+    }
+
+    .floating-logo {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: float 3s ease-in-out infinite;
+        z-index: 999;
+    }
+
+        .floating-logo img {
+            width: 50px;
+        }
+
+    @@keyframes float {
+        0%, 100%
+
+    {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    }
+</style>
+
+<div class="welcome-container">
+    <h1>Bienvenido a CentralFarma</h1>
+    <p>Tu salud es nuestra prioridad</p>
+    <div id="hora"></div>
+</div>
+
+<div class="floating-logo">
+    <img src="~/img/logo.png" alt="CentralFarma Logo" />
+</div>
+
+<script>
+    function actualizarHora() {
+        const horaElemento = document.getElementById('hora');
+        const ahora = new Date();
+        const hora = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        horaElemento.textContent = `Hora actual: ${hora}`;
+    }
+    setInterval(actualizarHora, 1000);
+    actualizarHora();
+</script>
+
